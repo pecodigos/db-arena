@@ -8,6 +8,7 @@ import com.pecodigos.dbarena.exceptions.UserAlreadyExistsException;
 import com.pecodigos.dbarena.exceptions.UserNotFoundException;
 import com.pecodigos.dbarena.users.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +18,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserService {
 
-    private final UserMapper userMapper;
+    private UserMapper userMapper;
     private UserRepository userRepository;
+    private BCryptPasswordEncoder passwordEncoder;
 
     public UserResponseDTO create(UserRequestDTO userRequestDTO) {
         if (userRepository.findByUsername(userRequestDTO.username()).isPresent()) {
@@ -33,7 +35,7 @@ public class UserService {
                 .name(userRequestDTO.name())
                 .username(userRequestDTO.username())
                 .email(userRequestDTO.email())
-                .password(userRequestDTO.password())
+                .password(passwordEncoder.encode(userRequestDTO.password()))
                 .build();
 
         return userMapper.toResponseDto(userRepository.save(user));
@@ -68,7 +70,7 @@ public class UserService {
                     data.setName(userRequestDTO.name());
                     data.setUsername(userRequestDTO.username());
                     data.setEmail(userRequestDTO.email());
-                    data.setPassword(userRequestDTO.password());
+                    data.setPassword(passwordEncoder.encode(userRequestDTO.password()));
 
                     return userMapper.toResponseDto(userRepository.save(data));
                 }).orElseThrow(() -> new UserNotFoundException("No user found with that ID."));

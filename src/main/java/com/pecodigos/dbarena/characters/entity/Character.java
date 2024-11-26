@@ -1,11 +1,13 @@
 package com.pecodigos.dbarena.characters.entity;
 
+import com.pecodigos.dbarena.abilities.entity.Ability;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,4 +26,7 @@ public class Character implements Serializable {
 
     @CreationTimestamp
     private LocalDateTime releaseDate;
+
+    @OneToMany
+    private List<Ability> abilities;
 }
