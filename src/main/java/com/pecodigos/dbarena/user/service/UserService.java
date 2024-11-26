@@ -1,12 +1,12 @@
-package com.pecodigos.dbarena.users.service;
+package com.pecodigos.dbarena.user.service;
 
-import com.pecodigos.dbarena.users.dtos.UserRequestDTO;
-import com.pecodigos.dbarena.users.dtos.UserResponseDTO;
-import com.pecodigos.dbarena.users.dtos.mapper.UserMapper;
-import com.pecodigos.dbarena.users.entity.User;
+import com.pecodigos.dbarena.user.dtos.UserRequestDTO;
+import com.pecodigos.dbarena.user.dtos.UserResponseDTO;
+import com.pecodigos.dbarena.user.dtos.mapper.UserMapper;
+import com.pecodigos.dbarena.user.entity.User;
 import com.pecodigos.dbarena.exceptions.UserAlreadyExistsException;
 import com.pecodigos.dbarena.exceptions.UserNotFoundException;
-import com.pecodigos.dbarena.users.repository.UserRepository;
+import com.pecodigos.dbarena.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

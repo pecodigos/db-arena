@@ -1,4 +1,4 @@
-package com.pecodigos.dbarena.users.dtos;
+package com.pecodigos.dbarena.user.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

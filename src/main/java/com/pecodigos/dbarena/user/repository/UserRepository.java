@@ -1,6 +1,6 @@
-package com.pecodigos.dbarena.users.repository;
+package com.pecodigos.dbarena.user.repository;
 
-import com.pecodigos.dbarena.users.entity.User;
+import com.pecodigos.dbarena.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

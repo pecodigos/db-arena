@@ -1,6 +1,6 @@
 package com.pecodigos.dbarena.config.security;
 
-import com.pecodigos.dbarena.users.repository.UserRepository;
+import com.pecodigos.dbarena.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

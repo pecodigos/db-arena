@@ -1,8 +1,8 @@
-package com.pecodigos.dbarena.users.controller;
+package com.pecodigos.dbarena.user.controller;
 
-import com.pecodigos.dbarena.users.dtos.UserRequestDTO;
-import com.pecodigos.dbarena.users.dtos.UserResponseDTO;
-import com.pecodigos.dbarena.users.service.UserService;
+import com.pecodigos.dbarena.user.dtos.UserRequestDTO;
+import com.pecodigos.dbarena.user.dtos.UserResponseDTO;
+import com.pecodigos.dbarena.user.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

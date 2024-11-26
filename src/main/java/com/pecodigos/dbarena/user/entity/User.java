@@ -1,4 +1,4 @@
-package com.pecodigos.dbarena.users.entity;
+package com.pecodigos.dbarena.user.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
