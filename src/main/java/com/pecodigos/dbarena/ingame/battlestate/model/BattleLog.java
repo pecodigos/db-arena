@@ -1,11 +1,13 @@
-package com.pecodigos.dbarena.battlestate.model;
+package com.pecodigos.dbarena.ingame.battlestate.model;
 
+import com.pecodigos.dbarena.ingame.enums.BattleQueueType;
 import com.pecodigos.dbarena.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -29,8 +31,12 @@ public class BattleLog {
     @JoinColumn(name = "player_two_id", nullable = false)
     private User playerTwo;
 
-    private LocalDateTime battleDate;
-
     @ManyToOne
     private User winner;
+
+    @Enumerated(EnumType.STRING)
+    private BattleQueueType battleQueueType;
+
+    @CreationTimestamp
+    private LocalDateTime battleDate;
 }

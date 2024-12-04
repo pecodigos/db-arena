@@ -1,6 +1,6 @@
-package com.pecodigos.dbarena.battlestate.service;
+package com.pecodigos.dbarena.ingame.battlestate.service;
 
-import com.pecodigos.dbarena.battlestate.model.BattleState;
+import com.pecodigos.dbarena.ingame.battlestate.model.BattleState;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 

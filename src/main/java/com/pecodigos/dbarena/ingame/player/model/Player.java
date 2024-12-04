@@ -1,6 +1,6 @@
-package com.pecodigos.dbarena.player.entity;
+package com.pecodigos.dbarena.ingame.player.model;
 
-import com.pecodigos.dbarena.characters.entity.Character;
+import com.pecodigos.dbarena.ingame.characters.model.Character;
 import com.pecodigos.dbarena.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,6 +17,6 @@ public class Player {
     @OneToOne
     private User user;
 
-    @ManyToMany
+    @OneToMany
     private List<Character> unlockedCharacters;
 }

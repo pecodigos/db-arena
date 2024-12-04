@@ -1,6 +1,6 @@
 package com.pecodigos.dbarena.config;
 
-import com.pecodigos.dbarena.characters.dtos.mapper.CharacterMapper;
+import com.pecodigos.dbarena.ingame.characters.dtos.mapper.CharacterMapper;
 import com.pecodigos.dbarena.user.dtos.mapper.UserMapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.context.annotation.Bean;

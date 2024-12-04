@@ -1,7 +1,7 @@
-package com.pecodigos.dbarena.battlestate.model;
+package com.pecodigos.dbarena.ingame.battlestate.model;
 
-import com.pecodigos.dbarena.enums.EnergyType;
-import com.pecodigos.dbarena.player.entity.Player;
+import com.pecodigos.dbarena.ingame.enums.EnergyType;
+import com.pecodigos.dbarena.ingame.player.model.Player;
 
 import java.util.List;
 import java.util.Map;
