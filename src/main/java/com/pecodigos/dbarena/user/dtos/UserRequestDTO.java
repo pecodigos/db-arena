@@ -5,5 +5,5 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
-public record UserRequestDTO(@NotNull UUID id, @NotBlank @NotNull String name, @NotBlank @NotNull String username, @NotBlank @NotNull String email, @NotBlank @NotNull String password){
+public record UserRequestDTO(@NotNull UUID id, @NotBlank @NotNull String username, @NotBlank @NotNull String email, @NotBlank @NotNull String password){
 }

@@ -1,6 +1,6 @@
-package com.pecodigos.dbarena.ingame.battlestate.model;
+package com.pecodigos.dbarena.ingame.models;
 
-import com.pecodigos.dbarena.ingame.enums.BattleQueueType;
+import com.pecodigos.dbarena.ingame.enums.battle.BattleQueueType;
 import com.pecodigos.dbarena.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "battle_logs")
-public class BattleLog {
+public class MatchLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

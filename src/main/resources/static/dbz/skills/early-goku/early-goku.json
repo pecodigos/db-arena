@@ -1,0 +1,116 @@
+{
+  "abilities": [
+    {
+      "id": 1,
+      "name": "Basic Combo",
+      "description": "Goku strikes several punches at the enemy, dealing 20 damage and making them deal 10 less damage next turn. This skill becomes 'Kaioken Attack' when 'Kaioken' is used.",
+      "damage": 20,
+      "damageType": "FLAT",
+      "cooldown": 0,
+      "cost": {
+        "COMBAT": 1
+      },
+      "skillType": "PHYSICAL",
+      "distance": "MELEE",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": true,
+      "requirements": []
+    },
+
+    {
+      "id": 2,
+      "name": "Kamehameha",
+      "description": "Goku uses his Kamehameha, dealing 30 piercing damage to one enemy. This skill becomes 'Kamehameha: Kaioken x3' when 'Kaioken' is active.",
+      "damage": 30,
+      "damageType": "PIERCING",
+      "cooldown": 1,
+      "cost": {
+        "KI": 1,
+        "ANY": 1
+      },
+      "skillType": "ENERGY",
+      "distance": "RANGED",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "requirements": []
+    },
+
+    {
+      "id": 3,
+      "name": "Kaioken",
+      "description": "Goku unleashes his power. He will gain 25% damage reduction, and have improved skills.",
+      "damage": 0,
+      "damageType": "NONE",
+      "cost": {
+        "TECHNIQUE": 1
+      },
+      "distance": "NONE",
+      "skillType": "ENERGY",
+      "effectType": "PREPARATION",
+      "persistentType": "INSTANT",
+      "durationInTurns": 2,
+      "isUnique": true,
+      "requirements": []
+    },
+
+    {
+      "id": 4,
+      "name": "Block",
+      "description": "Goku becomes invulnerable for one turn.",
+      "damage": 0,
+      "cost": {
+        "ANY": 1
+      },
+      "distance": "",
+      "skillType": "ENERGY",
+      "effectType": "",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "requirements": []
+    },
+
+    {
+      "id": 5,
+      "name": "Kaioken Attack",
+      "description": "Goku ",
+      "damage": 30,
+      "cost": {
+        "COMBAT": 1,
+        "ANY": 1
+      },
+      "distance": "",
+      "skillType": "PHYSICAL",
+      "effectType": "PREPARATION",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "requirements": [
+        "Kaioken"
+      ]
+    },
+
+    {
+      "id": 6,
+      "name": "3x Kaioken - Kamehameha",
+      "description": "Goku uses all his power into a Kamehameha empowered by his Kaioken technique, dealing 45 damage on one enemy and stunning them for one turn.",
+      "damage": 50,
+      "cost": {
+        "KI": 2
+      },
+      "distance": "RANGED",
+      "skillType": "KI",
+      "effectType": "STUN",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": true,
+      "requirements": [
+        "Kaioken"
+      ]
+    }
+  ]
+}

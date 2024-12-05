@@ -32,7 +32,6 @@ public class UserService {
         }
 
         var user = User.builder()
-                .name(userRequestDTO.name())
                 .username(userRequestDTO.username())
                 .email(userRequestDTO.email())
                 .password(passwordEncoder.encode(userRequestDTO.password()))
@@ -67,7 +66,6 @@ public class UserService {
 
         return userRepository.findById(id)
                 .map(data -> {
-                    data.setName(userRequestDTO.name());
                     data.setUsername(userRequestDTO.username());
                     data.setEmail(userRequestDTO.email());
                     data.setPassword(passwordEncoder.encode(userRequestDTO.password()));

@@ -26,10 +26,6 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Length(min = 3, max = 120)
-    @Column(length = 200, nullable = false)
-    private String name;
-
     @Length(min = 3, max = 21)
     @Column(length = 21, nullable = false)
     private String username;

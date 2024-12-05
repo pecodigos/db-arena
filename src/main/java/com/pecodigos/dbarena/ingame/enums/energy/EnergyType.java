@@ -1,4 +1,4 @@
-package com.pecodigos.dbarena.ingame.enums;
+package com.pecodigos.dbarena.ingame.enums.energy;
 
 public enum EnergyType {
     COMBAT,

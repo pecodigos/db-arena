@@ -6,8 +6,6 @@ public enum EffectType {
     ENERGY_REMOVAL,
     ENERGY_DRAIN,
     DOT,
-    BUFF,
-    HEAL,
-    DAMAGE_REDUCTION,
-    DAZE
+    PREPARATION,
+    NONE
 }
