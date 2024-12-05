@@ -1,6 +1,6 @@
 package com.pecodigos.dbarena.user.entity;
 
-import com.pecodigos.dbarena.ingame.fighters.model.Fighter;
+import com.pecodigos.dbarena.ingame.entities.Fighter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,5 +33,6 @@ public class Player {
     private Integer currentStreak;
     private Integer highestStreak;
 
+    @OneToMany
     private List<Fighter> unlockedFighters;
 }

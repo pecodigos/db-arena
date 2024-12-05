@@ -28,8 +28,5 @@ public class UserController {
         return ResponseEntity.ok(userService.find(id));
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<UserResponseDTO> register(@RequestBody UserRequestDTO userRequestDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(userRequestDTO));
-    }
+
 }

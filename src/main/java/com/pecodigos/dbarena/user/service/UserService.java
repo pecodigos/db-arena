@@ -8,6 +8,7 @@ import com.pecodigos.dbarena.exceptions.UserAlreadyExistsException;
 import com.pecodigos.dbarena.exceptions.UserNotFoundException;
 import com.pecodigos.dbarena.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,22 @@ public class UserService {
                 .build();
 
         return userMapper.toResponseDto(userRepository.save(user));
+    }
+
+    public UserResponseDTO login(UserRequestDTO userRequestDTO) {
+        var optionalUser = userRepository.findByUsername(userRequestDTO.username());
+
+        if (optionalUser.isEmpty()) {
+            throw new BadCredentialsException("Invalid username or password.");
+        }
+
+        var user = optionalUser.get();
+
+        if (!passwordEncoder.matches(userRequestDTO.password(), user.getPassword())) {
+            throw new BadCredentialsException("Invalid username or password.");
+        }
+
+        return userMapper.toResponseDto(user);
     }
 
     // Development -----
