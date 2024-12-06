@@ -38,6 +38,8 @@ public class UserService {
                 .username(userRequestDTO.username())
                 .email(userRequestDTO.email())
                 .password(passwordEncoder.encode(userRequestDTO.password()))
+                .clan("")
+                .ladderRank(0)
                 .role(Role.MEMBER)
                 .rank(Rank.BABY)
                 .profilePicturePath("https://i.imgur.com/w47JVL9.png")

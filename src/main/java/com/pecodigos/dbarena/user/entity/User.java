@@ -41,11 +41,15 @@ public class User implements Serializable {
     @Column(length = 120, nullable = false)
     private String password;
 
+    private String clan;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
     @Enumerated(EnumType.STRING)
     private Rank rank;
+
+    private Integer ladderRank;
 
     private String profilePicturePath;
     private Integer currentLevel;

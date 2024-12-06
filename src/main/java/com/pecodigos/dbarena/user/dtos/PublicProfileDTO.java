@@ -8,6 +8,8 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public record PublicProfileDTO(@NotNull String username,
+                               @NotNull Integer ladderRank,
+                               @NotNull String clan,
                                @NotNull Role role,
                                @NotNull Rank rank,
                                @NotNull String profilePicturePath,
