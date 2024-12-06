@@ -1,9 +1,11 @@
 package com.pecodigos.dbarena.user.controller;
 
+import com.pecodigos.dbarena.user.dtos.PublicProfileDTO;
 import com.pecodigos.dbarena.user.dtos.UserRequestDTO;
 import com.pecodigos.dbarena.user.dtos.UserResponseDTO;
 import com.pecodigos.dbarena.user.service.UserService;
 import lombok.AllArgsConstructor;
+import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,15 +20,8 @@ public class UserController {
 
     private UserService userService;
 
-    @GetMapping("/")
-    public ResponseEntity<List<UserResponseDTO>> listUsers() {
-        return ResponseEntity.ok(userService.list());
+    @GetMapping("/profile/{username}")
+    public ResponseEntity<PublicProfileDTO> getPublicProfile(@PathVariable String username) {
+        return ResponseEntity.ok(userService.getPublicProfile(username));
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> findById(@PathVariable(name = "id") UUID id) {
-        return ResponseEntity.ok(userService.find(id));
-    }
-
-
 }

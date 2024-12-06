@@ -1,18 +1,20 @@
 package com.pecodigos.dbarena.user.service;
 
+import com.pecodigos.dbarena.user.dtos.PublicProfileDTO;
 import com.pecodigos.dbarena.user.dtos.UserRequestDTO;
 import com.pecodigos.dbarena.user.dtos.UserResponseDTO;
 import com.pecodigos.dbarena.user.dtos.mapper.UserMapper;
 import com.pecodigos.dbarena.user.entity.User;
 import com.pecodigos.dbarena.exceptions.UserAlreadyExistsException;
 import com.pecodigos.dbarena.exceptions.UserNotFoundException;
+import com.pecodigos.dbarena.user.enums.Rank;
+import com.pecodigos.dbarena.user.enums.Role;
 import com.pecodigos.dbarena.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -36,6 +38,16 @@ public class UserService {
                 .username(userRequestDTO.username())
                 .email(userRequestDTO.email())
                 .password(passwordEncoder.encode(userRequestDTO.password()))
+                .role(Role.MEMBER)
+                .rank(Rank.BABY)
+                .profilePicturePath("https://i.imgur.com/w47JVL9.png")
+                .currentLevel(1)
+                .highestLevel(1)
+                .currentExp(0L)
+                .wins(0)
+                .loses(0)
+                .currentStreak(0)
+                .highestStreak(0)
                 .build();
 
         return userMapper.toResponseDto(userRepository.save(user));
@@ -57,37 +69,30 @@ public class UserService {
         return userMapper.toResponseDto(user);
     }
 
-    // Development -----
+    public UserResponseDTO changePassword(UUID id, String currentPassword, String newPassword) {
+        var user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found."));
 
-    public List<UserResponseDTO> list() {
-        return userRepository.findAll()
-                .stream()
-                .map(userMapper::toResponseDto)
-                .toList();
+        if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
+            throw new BadCredentialsException("Current password is incorrect.");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+
+        return userMapper.toResponseDto(user);
     }
 
-    public UserResponseDTO find(UUID id) {
-        return userMapper.toResponseDto(userRepository.findById(id)
+    public UserResponseDTO changeAvatar(UUID id, String avatarPath) {
+        var user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found."));
+
+        user.setProfilePicturePath(avatarPath);
+        userRepository.save(user);
+
+        return userMapper.toResponseDto(user);
+    }
+
+    public PublicProfileDTO getPublicProfile(String username) {
+        return userMapper.toPublicProfileDto(userRepository.findByUsername(username)
                 .orElseThrow(() -> new UserNotFoundException("User not found.")));
-    }
-
-
-    public UserResponseDTO update(UUID id, UserRequestDTO userRequestDTO) {
-        if (userRepository.findByUsername(userRequestDTO.username()).isPresent()) {
-            throw new UserAlreadyExistsException("Username already taken.");
-        }
-
-        if (userRepository.findByEmail(userRequestDTO.email()).isPresent()) {
-            throw new UserAlreadyExistsException("Email already taken.");
-        }
-
-        return userRepository.findById(id)
-                .map(data -> {
-                    data.setUsername(userRequestDTO.username());
-                    data.setEmail(userRequestDTO.email());
-                    data.setPassword(passwordEncoder.encode(userRequestDTO.password()));
-
-                    return userMapper.toResponseDto(userRepository.save(data));
-                }).orElseThrow(() -> new UserNotFoundException("No user found with that ID."));
     }
 }

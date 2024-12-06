@@ -1,5 +1,8 @@
 package com.pecodigos.dbarena.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.pecodigos.dbarena.user.enums.Rank;
+import com.pecodigos.dbarena.user.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -7,7 +10,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
@@ -39,9 +41,22 @@ public class User implements Serializable {
     @Column(length = 120, nullable = false)
     private String password;
 
-    @CreationTimestamp
-    private LocalDateTime createdAt;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    @Enumerated(EnumType.STRING)
+    private Rank rank;
+
+    private String profilePicturePath;
+    private Integer currentLevel;
+    private Integer highestLevel;
+    private Long currentExp;
+    private Integer wins;
+    private Integer loses;
+    private Integer currentStreak;
+    private Integer highestStreak;
+
+    @CreationTimestamp
+    @JsonFormat(pattern = "MMMM dd, yyyy")
+    private LocalDateTime createdAt;
 }
