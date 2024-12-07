@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -14,8 +13,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "fighters")
-public class Fighter implements Serializable {
+@Table(name = "characters")
+public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +24,6 @@ public class Fighter implements Serializable {
     private String imagePath;
 
     @OneToMany
-    @JoinColumn(name = "fighter_id")
+    @JoinColumn(name = "character_id")
     private List<Ability> abilities;
 }

@@ -3,7 +3,7 @@
 //import com.pecodigos.dbarena.exceptions.IllegalMoveException;
 //import com.pecodigos.dbarena.ingame.entities.Ability;
 //import com.pecodigos.dbarena.ingame.models.BattleRoom;
-//import com.pecodigos.dbarena.ingame.fighters.model.Fighter;
+//import com.pecodigos.dbarena.ingame.fighters.model.Character;
 //import com.pecodigos.dbarena.ingame.enums.battle.BattleState;
 //import com.pecodigos.dbarena.ingame.models.BattlePlayer;
 //import lombok.AllArgsConstructor;
@@ -35,7 +35,7 @@
 //        return Math.random() < 0.5;
 //    }
 //
-//    public void useOffensiveAbility(String gameId, Ability ability, Fighter attacker, Fighter target) {
+//    public void useOffensiveAbility(String gameId, Ability ability, Character attacker, Character target) {
 //        var battleRoom = redisBattleService.getBattleState(gameId);
 //
 //        if (battleRoom.getBattleState() == BattleState.GAME_OVER) {

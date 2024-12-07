@@ -47,7 +47,7 @@ public class RedisBattleService {
         updated = updated || updateCharacterHpInPlayer(battleRoom.getPlayerTwo(), characterId, newHp);
 
         if (!updated) {
-            throw new IllegalArgumentException("Fighter with ID " + characterId + " not found.");
+            throw new IllegalArgumentException("Character with ID " + characterId + " not found.");
         }
 
         // Save updated battle state

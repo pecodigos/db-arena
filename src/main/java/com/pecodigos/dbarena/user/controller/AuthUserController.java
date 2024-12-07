@@ -2,6 +2,7 @@ package com.pecodigos.dbarena.user.controller;
 
 import com.pecodigos.dbarena.config.auth.JwtUtil;
 import com.pecodigos.dbarena.user.dtos.PasswordDTO;
+import com.pecodigos.dbarena.user.dtos.PublicProfileDTO;
 import com.pecodigos.dbarena.user.dtos.UserRequestDTO;
 import com.pecodigos.dbarena.user.dtos.UserResponseDTO;
 import com.pecodigos.dbarena.user.service.UserService;
@@ -52,7 +53,7 @@ public class AuthUserController {
     }
 
     @PutMapping("/user/{id}/avatar")
-    public ResponseEntity<UserResponseDTO> updateAvatar(@PathVariable UUID id, @RequestBody String avatarPath) {
-        return ResponseEntity.ok(userService.changeAvatar(id, avatarPath));
+    public ResponseEntity<UserResponseDTO> updateAvatar(@PathVariable UUID id, @RequestBody PublicProfileDTO publicProfileDTO) {
+        return ResponseEntity.ok(userService.changeAvatar(id, publicProfileDTO.profilePicturePath()));
     }
 }

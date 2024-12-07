@@ -1,6 +1,5 @@
 package com.pecodigos.dbarena.ingame.entities;
 
-import com.pecodigos.dbarena.ingame.enums.energy.EnergyType;
 import com.pecodigos.dbarena.ingame.enums.skills.Distance;
 import com.pecodigos.dbarena.ingame.enums.skills.PersistentType;
 import com.pecodigos.dbarena.ingame.enums.skills.SkillType;
@@ -11,7 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Data
@@ -51,5 +49,5 @@ public class Ability {
 
     @ManyToOne
     @JoinColumn(name = "fighter_id")
-    private Fighter fighter;
+    private Character character;
 }
