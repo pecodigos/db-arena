@@ -1,8 +1,7 @@
 package com.pecodigos.dbarena.ingame.entities;
 
-import com.pecodigos.dbarena.ingame.enums.skills.Distance;
-import com.pecodigos.dbarena.ingame.enums.skills.PersistentType;
-import com.pecodigos.dbarena.ingame.enums.skills.SkillType;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.pecodigos.dbarena.ingame.enums.skills.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,20 +23,35 @@ public class Ability {
     private Long id;
     private String name;
     private String description;
+    private String imagePath;
     private Integer damage;
     private Integer cooldown;
-    private Integer damageReductionAmount;
 
     @OneToMany(mappedBy = "ability", cascade = CascadeType.ALL)
     private List<AbilityCost> cost;
 
+    @Enumerated(EnumType.STRING)
+    private DamageType damageType;
+
+    @Enumerated(EnumType.STRING)
+    private EffectType effectType;
+
+    @Enumerated(EnumType.STRING)
     private Distance distance;
+
+    @Enumerated(EnumType.STRING)
     private SkillType skillType;
+
+    @Enumerated(EnumType.STRING)
     private PersistentType persistentType;
+
     private Integer durationInTurns;
-    private boolean isUnique;
-    private boolean isHarmful;
-    private boolean isActive;
+
+    @JsonProperty("isUnique")
+    private Boolean isUnique;
+
+    @JsonProperty("isHarmful")
+    private Boolean isHarmful;
 
     @ManyToMany
     @JoinTable(
@@ -47,7 +61,7 @@ public class Ability {
     )
     private List<Ability> requirements;
 
-    @ManyToOne
-    @JoinColumn(name = "fighter_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "character_id")
     private Character character;
 }

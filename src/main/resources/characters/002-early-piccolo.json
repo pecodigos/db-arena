@@ -1,0 +1,88 @@
+{
+  "name": "Early Piccolo",
+  "description": "The wise and stoic Namekian warrior, once an enemy of Goku, now a mentor and protector of Earth.",
+  "imagePath": "https://i.imgur.com/jl69YdH.png",
+
+  "abilities": [
+    {
+      "name": "Blast",
+      "description": "Piccolo throws a blast at one enemy, dealing 20 affliction damage to them.",
+      "imagePath": "https://i.imgur.com/0OLHV8i.png",
+      "damage": 20,
+      "damageType": "AFFLICTION",
+      "cooldown": 0,
+      "cost": [
+        { "energyType": "KI", "amount":  1 }
+      ],
+      "skillType": "AFFLICTION",
+      "distance": "RANGED",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "isHarmful": true,
+      "requirements": []
+    },
+
+    {
+      "name": "Beam Cannon",
+      "description": "Piccolo uses his special attack, which is a powerful energy wave in a spiral form, removing one enemy destructive defense and dealing 35 piercing damage to them.",
+      "imagePath": "https://i.imgur.com/Gek6IvH.png",
+      "damage": 35,
+      "damageType": "PIERCING",
+      "cooldown": 1,
+      "cost": [
+        { "energyType": "KI", "amount": 1 },
+        { "energyType": "ANY", "amount": 1}
+      ],
+      "skillType": "ENERGY",
+      "distance": "RANGED",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": true,
+      "isHarmful": true,
+      "requirements": []
+    },
+
+    {
+      "name": "Protect an Ally",
+      "description": "Piccolo protects one ally for one turn. In that turn, all damage that character would suffer is halved and transferred to Piccolo's. This skill is invisible.",
+      "imagePath": "https://i.imgur.com/J7jymAt.png",
+      "damage": 0,
+      "damageType": "NONE",
+      "cooldown": 2,
+      "cost": [
+        { "energyType": "ANY", "amount": 1 }
+      ],
+      "distance": "NONE",
+      "skillType": "PHYSICAL",
+      "effectType": "PREPARATION",
+      "persistentType": "INSTANT",
+      "durationInTurns": 2,
+      "isUnique": false,
+      "isHarmful": false,
+      "requirements": []
+    },
+
+    {
+      "name": "Block",
+      "description": "Piccolo becomes invulnerable for one turn.",
+      "imagePath": "https://i.imgur.com/IckTqst.png",
+      "damage": 0,
+      "damageType": "NONE",
+      "cooldown": 4,
+      "cost": [
+        { "energyType": "ANY", "amount": 1 }
+      ],
+      "distance": "NONE",
+      "skillType": "ENERGY",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "isHarmful": false,
+      "requirements": []
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "name": "Early Vegeta",
+  "description": "The proud Saiyan prince, fiercely competitive and always striving to surpass Goku in strength and power.",
+  "imagePath": "https://i.imgur.com/WHP2i08.png",
+
+  "abilities": [
+    {
+      "name": "Blast",
+      "description": "Vegeta throws a blast at one enemy, dealing 20 affliction damage to them.",
+      "imagePath": "https://i.imgur.com/ZkUemfe.png",
+      "damage": 20,
+      "damageType": "AFFLICTION",
+      "cooldown": 0,
+      "cost": [
+        { "energyType": "KI", "amount":  1 }
+      ],
+      "skillType": "AFFLICTION",
+      "distance": "RANGED",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "isHarmful": true,
+      "requirements": []
+    },
+
+    {
+      "name": "Galick Gun",
+      "description": "Vegeta uses his Galick Gun, a powerful energy wave, dealing 30 piercing damage to one enemy and 15 damage to all other enemies.",
+      "imagePath": "https://i.imgur.com/lGaEsJ6.png",
+      "damage": 30,
+      "damageType": "FLAT",
+      "cooldown": 1,
+      "cost": [
+        { "energyType": "KI", "amount": 1 },
+        { "energyType": "ANY", "amount": 1}
+      ],
+      "skillType": "ENERGY",
+      "distance": "RANGED",
+      "effectType": "AOE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": true,
+      "isHarmful": true,
+      "requirements": []
+    },
+
+    {
+      "name": "Explosion Wave",
+      "description": "Vegeta bursts into a giant explosion wave, dealing 25 affliction damage to all enemies.",
+      "imagePath": "https://i.imgur.com/Dm3vIBV.png",
+      "damage": 20,
+      "damageType": "AFFLICTION",
+      "cooldown": 2,
+      "cost": [
+        { "energyType": "TECHNIQUE", "amount": 1}
+      ],
+      "distance": "RANGED",
+      "skillType": "ENERGY",
+      "effectType": "AOE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 2,
+      "isUnique": true,
+      "isHarmful": false,
+      "requirements": []
+    },
+
+    {
+      "name": "Evade",
+      "description": "Vegeta becomes invulnerable for one turn.",
+      "imagePath": "https://i.imgur.com/MsQh9tW.png",
+      "damage": 0,
+      "damageType": "NONE",
+      "cooldown": 4,
+      "cost": [
+        { "energyType": "ANY", "amount": 1 }
+      ],
+      "distance": "NONE",
+      "skillType": "ENERGY",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "isHarmful": false,
+      "requirements": []
+    }
+  ]
+}

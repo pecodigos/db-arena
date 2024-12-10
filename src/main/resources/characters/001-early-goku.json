@@ -1,0 +1,88 @@
+{
+  "name": "Early Goku",
+  "description": "The cheerful and determined Saiyan warrior, known for his love of fighting, immense strength, and quest to protect Earth.",
+  "imagePath": "https://i.imgur.com/Brdu7RX.png",
+
+  "abilities": [
+    {
+      "name": "Rush Attack",
+      "description": "Goku strikes several punches at one enemy, dealing 20 damage to them and making them deal 10 less damage on the next turn.",
+      "imagePath": "https://i.imgur.com/gw6p7xq.png",
+      "damage": 20,
+      "damageType": "FLAT",
+      "cooldown": 0,
+      "cost": [
+        { "energyType": "COMBAT", "amount":  1 }
+      ],
+      "skillType": "PHYSICAL",
+      "distance": "MELEE",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "isHarmful": true,
+      "requirements": []
+    },
+
+    {
+      "name": "Kamehameha",
+      "description": "Goku uses his Kamehameha, dealing 30 piercing damage to one enemy.",
+      "imagePath": "https://i.imgur.com/crCNnXX.png",
+      "damage": 30,
+      "damageType": "PIERCING",
+      "cooldown": 1,
+      "cost": [
+        { "energyType": "KI", "amount": 1 },
+        { "energyType": "ANY", "amount": 1}
+      ],
+      "skillType": "ENERGY",
+      "distance": "RANGED",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": true,
+      "isHarmful": true,
+      "requirements": []
+    },
+
+    {
+      "name": "Kaioken",
+      "description": "Goku unleashes Kaioken power. He will gain 10 damage reduction points, his abilities will deal 10 additional damage and 'Kamehameha' will stun. This ability lasts 3 turns.",
+      "imagePath": "https://i.imgur.com/8t9a0IK.png",
+      "damage": 0,
+      "damageType": "NONE",
+      "cooldown": 4,
+      "cost": [
+        { "energyType": "TECHNIQUE", "amount": 1}
+      ],
+      "distance": "NONE",
+      "skillType": "ENERGY",
+      "effectType": "PREPARATION",
+      "persistentType": "INSTANT",
+      "durationInTurns": 2,
+      "isUnique": true,
+      "isHarmful": false,
+      "requirements": []
+    },
+
+    {
+      "name": "Block",
+      "description": "Goku becomes invulnerable for one turn.",
+      "imagePath": "https://i.imgur.com/LfSE5GF.png",
+      "damage": 0,
+      "damageType": "NONE",
+      "cooldown": 4,
+      "cost": [
+        { "energyType": "ANY", "amount": 1 }
+      ],
+      "distance": "NONE",
+      "skillType": "ENERGY",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "isHarmful": false,
+      "requirements": []
+    }
+  ]
+}

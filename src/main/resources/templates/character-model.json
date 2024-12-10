@@ -1,0 +1,87 @@
+{
+  "name": "",
+  "description": "",
+  "imagePath": "",
+
+  "abilities": [
+    {
+      "name": "",
+      "description": "",
+      "imagePath": "",
+      "damage": 0,
+      "damageType": "",
+      "cooldown": 0,
+      "cost": [
+        { "energyType": "ANY", "amount": 1 }
+      ],
+      "skillType": "",
+      "distance": "",
+      "effectType": "",
+      "persistentType": "",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "isHarmful": true,
+      "requirements": []
+    },
+
+    {
+      "name": "",
+      "description": "",
+      "imagePath": "",
+      "damage": 0,
+      "damageType": "",
+      "cooldown": 1,
+      "cost": [
+        { "energyType": "ANY", "amount": 1}
+      ],
+      "skillType": "",
+      "distance": "",
+      "effectType": "",
+      "persistentType": "",
+      "durationInTurns": 1,
+      "isUnique": true,
+      "isHarmful": true,
+      "requirements": []
+    },
+
+    {
+      "name": "",
+      "description": "",
+      "imagePath": "",
+      "damage": 0,
+      "damageType": "NONE",
+      "cooldown": 4,
+      "cost": [
+        { "energyType": "TECHNIQUE", "amount": 1}
+      ],
+      "distance": "",
+      "skillType": "",
+      "effectType": "",
+      "persistentType": "INSTANT",
+      "durationInTurns": 2,
+      "isUnique": true,
+      "isHarmful": false,
+      "requirements": []
+    },
+
+    {
+      "name": "Block",
+      "description": "Goku becomes invulnerable for one turn.",
+      "imagePath": "https://i.imgur.com/LfSE5GF.png",
+      "damage": 0,
+      "damageType": "NONE",
+      "cooldown": 4,
+      "cost": [
+        { "energyType": "ANY", "amount": 1 }
+      ],
+      "distance": "NONE",
+      "skillType": "ENERGY",
+      "effectType": "NONE",
+      "persistentType": "INSTANT",
+      "durationInTurns": 1,
+      "isUnique": false,
+      "isHarmful": false,
+      "requirements": []
+    }
+  ]
+}

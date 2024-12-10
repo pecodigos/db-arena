@@ -23,7 +23,6 @@ public class Character {
     private String description;
     private String imagePath;
 
-    @OneToMany
-    @JoinColumn(name = "character_id")
+    @OneToMany(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Ability> abilities;
 }
