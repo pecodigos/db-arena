@@ -42,7 +42,7 @@ public class UserService {
                 .ladderRank(0)
                 .role(Role.MEMBER)
                 .rank(Rank.BABY)
-                .profilePicturePath("https://i.imgur.com/w47JVL9.png")
+                .profilePicturePath("https://i.imgur.com/dB81Zwr.jpeg")
                 .currentLevel(1)
                 .highestLevel(1)
                 .currentExp(0L)

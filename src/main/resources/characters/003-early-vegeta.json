@@ -26,7 +26,7 @@
 
     {
       "name": "Galick Gun",
-      "description": "Vegeta uses his Galick Gun, a powerful energy wave, dealing 30 piercing damage to one enemy and 15 damage to all other enemies.",
+      "description": "Vegeta uses his Galick Gun, a powerful energy wave, dealing 30 to one enemy and 10 damage to all other enemies.",
       "imagePath": "https://i.imgur.com/lGaEsJ6.png",
       "damage": 30,
       "damageType": "FLAT",
@@ -47,7 +47,7 @@
 
     {
       "name": "Explosion Wave",
-      "description": "Vegeta bursts into a giant explosion wave, dealing 25 affliction damage to all enemies.",
+      "description": "Vegeta bursts into a giant explosion wave, dealing 20 affliction damage to all enemies.",
       "imagePath": "https://i.imgur.com/Dm3vIBV.png",
       "damage": 20,
       "damageType": "AFFLICTION",
@@ -56,7 +56,7 @@
         { "energyType": "TECHNIQUE", "amount": 1}
       ],
       "distance": "RANGED",
-      "skillType": "ENERGY",
+      "skillType": "AFFLICTION",
       "effectType": "AOE",
       "persistentType": "INSTANT",
       "durationInTurns": 2,

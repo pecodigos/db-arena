@@ -6,15 +6,15 @@
   "abilities": [
     {
       "name": "Blast",
-      "description": "Piccolo throws a blast at one enemy, dealing 20 affliction damage to them.",
+      "description": "Piccolo throws a blast at one enemy, dealing 20 piercing damage to them.",
       "imagePath": "https://i.imgur.com/0OLHV8i.png",
       "damage": 20,
-      "damageType": "AFFLICTION",
+      "damageType": "PIERCING",
       "cooldown": 0,
       "cost": [
         { "energyType": "KI", "amount":  1 }
       ],
-      "skillType": "AFFLICTION",
+      "skillType": "ENERGY",
       "distance": "RANGED",
       "effectType": "NONE",
       "persistentType": "INSTANT",
