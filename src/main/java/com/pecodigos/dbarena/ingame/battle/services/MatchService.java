@@ -7,15 +7,35 @@ import org.springframework.stereotype.Service;
 @Service
 public class MatchService {
 
-    public Match createMatch(Player playerOne, Player playerTwo) {
-        Match match = new Match();
-        match.setPlayerOne(playerOne);
-        match.setPlayerTwo(playerTwo);
-        match.setCurrentPlayer(match.whoStarts());
+    private static final short FIRST_TURN_ENERGY_AMOUNT = 1;
+    private static final short SECOND_TURN_ENERGY_AMOUNT = 3;
 
-        var currentPlayer = match.getCurrentPlayer();
-        currentPlayer.generateEnergy();
+    public Match createMatch(Player playerOne, Player playerTwo) {
+        if (playerOne == null || playerTwo == null) {
+            throw new IllegalArgumentException("Players cannot be null");
+        }
+
+        Match match = Match.builder()
+                .playerOne(playerOne)
+                .playerTwo(playerTwo)
+                .turnNumber(1)
+                .build();
+
+        var startingPlayer = match.whoStarts();
+        match.setCurrentPlayer(startingPlayer);
+
+        playerOne.generateEnergy();
+        playerTwo.generateEnergy();
 
         return match;
+    }
+
+    public void endTurn(Match match) {
+        var currentPlayer = match.getCurrentPlayer();
+
+        currentPlayer.generateEnergy();
+
+        match.switchTurn();
+        match.setTurnNumber(match.getTurnNumber() + 1);
     }
 }

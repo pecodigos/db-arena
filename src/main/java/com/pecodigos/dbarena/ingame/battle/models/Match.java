@@ -1,10 +1,12 @@
 package com.pecodigos.dbarena.ingame.battle.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Match {
@@ -14,10 +16,10 @@ public class Match {
     private Integer turnNumber;
 
     public Player whoStarts() {
-        if (Math.random() > 0.5) {
-            return this.playerOne;
-        } else {
-            return this.playerTwo;
-        }
+        return Math.random() < 0.5 ? playerOne : playerTwo;
+    }
+
+    public void switchTurn() {
+        this.currentPlayer = (this.currentPlayer == playerOne) ? playerTwo : playerOne;
     }
 }
