@@ -12,17 +12,5 @@ public class Skill {
         return currentCooldown <= 0;
     }
 
-    public void reduceCooldown() {
-        if (currentCooldown > 0) {
-            currentCooldown--;
-        }
-    }
 
-    public void useSkill() {
-        if (!isAvailable()) {
-            throw new IllegalStateException("Skill on cooldown.");
-        }
-
-        this.currentCooldown = ability.getCooldown();
-    }
 }

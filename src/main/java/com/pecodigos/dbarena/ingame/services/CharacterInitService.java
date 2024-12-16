@@ -28,6 +28,9 @@ public class CharacterInitService {
                 if (file.isFile() && file.getName().endsWith(".json")) {
                     var character = objectMapper.readValue(file, Character.class);
 
+                    boolean exists = characterRepository.findByName(character.getName()).isPresent();
+                    if (exists) continue;
+
                     character.getAbilities().forEach(ability -> {
                         ability.setCharacter(character);
                         ability.getCost().forEach(cost -> cost.setAbility(ability));
@@ -39,8 +42,5 @@ public class CharacterInitService {
         } catch (IOException e) {
             System.err.println("Error reading file " + e.getMessage());
         }
-
-
-
     }
 }

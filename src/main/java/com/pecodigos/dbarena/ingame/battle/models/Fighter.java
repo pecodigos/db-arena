@@ -33,12 +33,6 @@ public class Fighter {
                 .filter(s -> s.getAbility().getName().equals(skillName))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Skill not found"));
-
-        skill.useSkill();
-    }
-
-    public void reduceCooldowns() {
-        Arrays.stream(skills).forEach(Skill::reduceCooldown);
     }
 
     public void takeDamage(int damage) {
@@ -52,13 +46,82 @@ public class Fighter {
         }
     }
 
-    public void endStun() {
-        this.isStunned = false;
-    }
-
     public void takeHeal(int heal) {
         if (!isAlive) return;
 
         this.currentHp += heal;
+    }
+
+
+    public void useHarmfulSkill(Fighter[] targetCharacters, Skill skill) {
+        if (!skill.isAvailable()) {
+            throw new IllegalStateException("Skill on cooldown.");
+        }
+        if (Boolean.FALSE.equals(skill.getAbility().getIsHarmful())) return;
+
+        var increasedDamage = currentBonusDamage;
+        var damage = skill.getAbility().getDamage() + increasedDamage;
+        int damageDealt;
+
+        switch (skill.getAbility().getEffectType()) {
+            case STUN:
+                for (Fighter targetCharacter : targetCharacters) {
+                    targetCharacter.setStunned(true);
+                }
+                break;
+            case ENERGY_DRAIN:
+                for (Fighter targetCharacter : targetCharacters) {
+
+                }
+        }
+
+        // Damage and type damage
+        switch (skill.getAbility().getDamageType()) {
+            case NONE:
+                break;
+            case FLAT:
+                for (Fighter targetCharacter : targetCharacters) {
+                    damageDealt = damage - (targetCharacter.currentDestructibleDefense + targetCharacter.currentDamageReduction);
+                    targetCharacter.setCurrentDestructibleDefense(Math.max(targetCharacter.getCurrentDestructibleDefense() - damage, 0));
+
+                    if (damageDealt > 0) {
+                        targetCharacter.setCurrentHp(getCurrentHp() - damageDealt);
+                        if (targetCharacter.getCurrentHp() <= 0) {
+                            targetCharacter.setAlive(false);
+                            break;
+                        }
+                    }
+                }
+                break;
+            case AFFLICTION:
+                for (Fighter targetCharacter : targetCharacters) {
+                    if (damage > 0) {
+                        targetCharacter.setCurrentHp(getCurrentHp() - damage);
+                        if (targetCharacter.getCurrentHp() <= 0) {
+                            targetCharacter.setAlive(false);
+                            break;
+                        }
+                    }
+                }
+                break;
+            case PIERCING:
+                for (Fighter targetCharacter : targetCharacters) {
+                    damageDealt = damage - targetCharacter.currentDestructibleDefense;
+                    targetCharacter.setCurrentDestructibleDefense(Math.max(targetCharacter.getCurrentDestructibleDefense() - damage, 0));
+
+                    if (damageDealt > 0) {
+                        targetCharacter.setCurrentHp(getCurrentHp() - damageDealt);
+                        if (targetCharacter.getCurrentHp() <= 0) {
+                            targetCharacter.setAlive(false);
+                            break;
+                        }
+                    }
+                }
+                break;
+            default:
+                throw new IllegalStateException("No type damage skill. Some bug has probably occur. Report this.");
+        }
+        var skillCooldown = skill.getAbility().getCooldown();
+        skill.setCurrentCooldown(skillCooldown);
     }
 }

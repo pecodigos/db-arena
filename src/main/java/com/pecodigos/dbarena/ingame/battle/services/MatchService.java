@@ -1,41 +1,43 @@
-package com.pecodigos.dbarena.ingame.battle.services;
-
-import com.pecodigos.dbarena.ingame.battle.models.Match;
-import com.pecodigos.dbarena.ingame.battle.models.Player;
-import org.springframework.stereotype.Service;
-
-@Service
-public class MatchService {
-
-    private static final short FIRST_TURN_ENERGY_AMOUNT = 1;
-    private static final short SECOND_TURN_ENERGY_AMOUNT = 3;
-
-    public Match createMatch(Player playerOne, Player playerTwo) {
-        if (playerOne == null || playerTwo == null) {
-            throw new IllegalArgumentException("Players cannot be null");
-        }
-
-        Match match = Match.builder()
-                .playerOne(playerOne)
-                .playerTwo(playerTwo)
-                .turnNumber(1)
-                .build();
-
-        var startingPlayer = match.whoStarts();
-        match.setCurrentPlayer(startingPlayer);
-
-        playerOne.generateEnergy();
-        playerTwo.generateEnergy();
-
-        return match;
-    }
-
-    public void endTurn(Match match) {
-        var currentPlayer = match.getCurrentPlayer();
-
-        currentPlayer.generateEnergy();
-
-        match.switchTurn();
-        match.setTurnNumber(match.getTurnNumber() + 1);
-    }
-}
+//package com.pecodigos.dbarena.ingame.battle.services;
+//
+//import com.pecodigos.dbarena.ingame.battle.models.Match;
+//import com.pecodigos.dbarena.ingame.battle.models.Player;
+//import com.pecodigos.dbarena.ingame.enums.battle.BattleState;
+//import org.springframework.messaging.simp.SimpMessagingTemplate;
+//import org.springframework.security.core.parameters.P;
+//import org.springframework.stereotype.Service;
+//
+//import java.util.HashSet;
+//import java.util.Iterator;
+//import java.util.Set;
+//
+//@Service
+//public class MatchService {
+//
+//    private final Set<String> waitingPlayers = new HashSet<>();
+//    private final SimpMessagingTemplate messagingTemplate;
+//    private Match currentMatch;
+//
+//    public MatchService(SimpMessagingTemplate messagingTemplate) {
+//        this.messagingTemplate = messagingTemplate;
+//    }
+//
+//    public void searchForMatch(String playerId, Player player) {
+//        waitingPlayers.add(playerId);
+//        tryToMatch(player);
+//    }
+//
+//    private void tryToMatch(Player player) {
+//        if (waitingPlayers.size() == 2) {
+//            Iterator<String> iterator = waitingPlayers.iterator();
+//            String playerOneId = iterator.next();
+//            String playerTwoId = iterator.next();
+//
+//            sendMatchStart(currentMatch);
+//        }
+//    }
+//
+//    private void sendMatchStart(Match match) {
+//        System.out.println();
+//    }
+//}

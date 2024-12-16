@@ -26,15 +26,29 @@ public class Player {
         isFirstTurn = false;
     }
 
-    public void useSkill(int fighterIndex, String skillName) {
-        Fighter fighter = team[fighterIndex];
+    public void useSkill(int sourceIndex, int targetIndex, String skillName) {
+        var fighter = team[sourceIndex];
         fighter.useSkill(skillName);
+    }
+
+    public void energyDrained() {
+        if (!energyPool.isEmpty()) {
+            EnergyType randomEnergy = (EnergyType) energyPool.keySet().toArray()[new Random().nextInt(energyPool.size())];
+
+            int currrentEnergyCount = energyPool.get(randomEnergy);
+            if (currrentEnergyCount > 0) {
+                energyPool.put(randomEnergy, currrentEnergyCount - 1);
+            }
+        }
     }
 
 
     public void reduceCooldowns() {
         for (Fighter fighter : team) {
-            fighter.reduceCooldowns();
+            Skill[] skills = fighter.getSkills();
+            for (Skill skill : skills) {
+                skill.setCurrentCooldown(skill.getCurrentCooldown() - 1);
+            }
         }
     }
 }
