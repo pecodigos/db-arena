@@ -82,7 +82,7 @@ public class Fighter {
             case FLAT:
                 for (Fighter targetCharacter : targetCharacters) {
                     damageDealt = damage - (targetCharacter.currentDestructibleDefense + targetCharacter.currentDamageReduction);
-                    targetCharacter.setCurrentDestructibleDefense(Math.max(targetCharacter.getCurrentDestructibleDefense() - damage, 0));
+                    subtractDestructiveDefense(damage, targetCharacter);
 
                     if (damageDealt > 0) {
                         targetCharacter.setCurrentHp(getCurrentHp() - damageDealt);
@@ -107,7 +107,7 @@ public class Fighter {
             case PIERCING:
                 for (Fighter targetCharacter : targetCharacters) {
                     damageDealt = damage - targetCharacter.currentDestructibleDefense;
-                    targetCharacter.setCurrentDestructibleDefense(Math.max(targetCharacter.getCurrentDestructibleDefense() - damage, 0));
+                    subtractDestructiveDefense(damage, targetCharacter);
 
                     if (damageDealt > 0) {
                         targetCharacter.setCurrentHp(getCurrentHp() - damageDealt);
@@ -123,5 +123,10 @@ public class Fighter {
         }
         var skillCooldown = skill.getAbility().getCooldown();
         skill.setCurrentCooldown(skillCooldown);
+    }
+
+
+    private void subtractDestructiveDefense(int damage, Fighter targetCharacter) {
+        targetCharacter.setCurrentDestructibleDefense(Math.max(targetCharacter.getCurrentDestructibleDefense() - damage, 0));
     }
 }

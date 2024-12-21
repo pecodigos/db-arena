@@ -1,23 +1,35 @@
-//package com.pecodigos.dbarena.ingame.battle.controllers;
-//
-//import com.pecodigos.dbarena.ingame.battle.services.MatchService;
-//import lombok.AllArgsConstructor;
-//import org.springframework.messaging.simp.SimpMessagingTemplate;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//@RestController
-//@RequestMapping("/api/battle")
-//@AllArgsConstructor
-//public class MatchController {
-//
-//    private MatchService matchService;
-//    private SimpMessagingTemplate messagingTemplate;
-//
-//    @PostMapping("/search")
-//    public void searchForMatch(@RequestParam String playerId) {
-//        matchService.searchForMatch(playerId);
-//    }
-//}
+package com.pecodigos.dbarena.ingame.battle.controllers;
+
+import com.pecodigos.dbarena.ingame.battle.models.Match;
+import com.pecodigos.dbarena.ingame.battle.services.MatchService;
+import lombok.AllArgsConstructor;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.annotation.SendToUser;
+import org.springframework.stereotype.Controller;
+
+import java.security.Principal;
+
+@Controller
+@AllArgsConstructor
+public class MatchController {
+
+    private MatchService matchService;
+
+    @MessageMapping("/battle/search")
+    @SendToUser("queue/search-status")
+    public String searchForMatch(Principal principal) {
+        matchService.searchForMatch(principal.getName());
+        return "Searching for match";
+    }
+
+    @MessageMapping("/battle/get-match")
+    @SendToUser("/queue/match")
+    public Match getMatch(Principal principal) {
+        return matchService.getMatch(principal.getName());
+    }
+
+    @MessageMapping("/battle/end-turn")
+    public void endTurn(Principal principal) {
+        matchService.endTurn(principal.getName());
+    }
+}

@@ -1,12 +1,10 @@
 package com.pecodigos.dbarena.user.dtos;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.pecodigos.dbarena.user.enums.Rank;
 import com.pecodigos.dbarena.user.enums.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 public record UserRequestDTO(@NotNull UUID id,
