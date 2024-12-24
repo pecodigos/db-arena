@@ -32,12 +32,10 @@ public class MatchService {
     public void searchForMatch(String username) {
         PublicProfileDTO playerProfile = userService.getPublicProfile(username);
 
-        System.out.println("Player searching for match: " + username);
 
         waitingPlayers.add(playerProfile);
         messagingTemplate.convertAndSendToUser(username, QUEUE_MATCH + "-status", "Waiting for an opponent...");
 
-        System.out.println("Player added to queue: " + username);
 
         tryToMatch();
     }
@@ -71,8 +69,6 @@ public class MatchService {
             redisTemplate.opsForValue().set(REDIS_KEY + profileOne.username(), match);
             redisTemplate.opsForValue().set(REDIS_KEY + profileTwo.username(), match);
 
-            System.out.println("Player One Profile info: " + playerOne.getUserProfile().toString());
-            System.out.println("Player Two Profile info: " + playerTwo.getUserProfile().toString());
             var matchInfoOne = new MatchInfoDTO(match, playerTwo.getUserProfile());
             var matchInfoTwo = new MatchInfoDTO(match, playerOne.getUserProfile());
 
@@ -84,13 +80,10 @@ public class MatchService {
     public MatchInfoDTO getMatch(String username) {
         var match = (Match) redisTemplate.opsForValue().get(REDIS_KEY + username);
         if (match != null) {
-            System.out.println("Match info: " + match);
             String opponentUsername = determineOpponentUsername(match, username);
-            System.out.println("Retrieving opponent profile for username: " + opponentUsername);
             var opponentProfile = userService.getPublicProfile(opponentUsername);
             return new MatchInfoDTO(match, opponentProfile);
         }
-        System.out.println("Match info returns null");
         return null;
     }
 
@@ -105,12 +98,9 @@ public class MatchService {
     }
 
     public String determineOpponentUsername(Match match, String username) {
-        System.out.println("Player one username: " + match.getPlayerOne().getUsername());
         if (match.getPlayerOne().getUsername().equals(username)) {
-            System.out.println("Player two username: " + match.getPlayerTwo().getUsername());
             return match.getPlayerTwo().getUsername();
         }
-
         return match.getPlayerOne().getUsername();
     }
 }
