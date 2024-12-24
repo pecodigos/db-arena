@@ -20,5 +20,5 @@ public record PublicProfileDTO(@NotNull String username,
                                @NotNull Integer loses,
                                @NotNull Integer currentStreak,
                                @NotNull Integer highestStreak,
-                               @NotNull @JsonFormat(pattern = "MMMM dd, yyyy") LocalDateTime createdAt) {
+                               @NotNull @JsonFormat(pattern = "MMMM dd, yyyy", shape = JsonFormat.Shape.STRING) LocalDateTime createdAt) {
 }

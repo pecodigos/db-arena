@@ -1,6 +1,7 @@
 package com.pecodigos.dbarena.ingame.battle.models;
 
 import com.pecodigos.dbarena.ingame.enums.energy.EnergyType;
+import com.pecodigos.dbarena.user.dtos.PublicProfileDTO;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -12,9 +13,14 @@ import java.util.Random;
 @Data
 @RequiredArgsConstructor
 public class Player {
+    private final PublicProfileDTO userProfile;
     private Map<EnergyType, Integer> energyPool = new HashMap<>();
     private Fighter[] team = new Fighter[3];
     private boolean isFirstTurn;
+
+    public String getUsername() {
+        return userProfile.username();
+    }
 
     public void generateEnergy() {
         int energyToGenerate = isFirstTurn ? 1 : (int) Arrays.stream(team).filter(Fighter::isAlive).count();

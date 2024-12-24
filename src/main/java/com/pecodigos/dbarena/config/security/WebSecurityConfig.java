@@ -46,12 +46,7 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/ws/**").permitAll()
-                        .requestMatchers("/topic/**").permitAll()
-                        .requestMatchers("/queue/**").permitAll()
-                        .requestMatchers("/app/**").permitAll()
-                        .anyRequest().permitAll())
+                .authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
                 .userDetailsService(userDetailsService)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
