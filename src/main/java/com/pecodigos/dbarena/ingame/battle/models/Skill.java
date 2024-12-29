@@ -11,6 +11,4 @@ public class Skill {
     public boolean isAvailable() {
         return currentCooldown <= 0;
     }
-
-
 }

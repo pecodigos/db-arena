@@ -1,9 +1,10 @@
 package com.pecodigos.dbarena.ingame.battle.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.pecodigos.dbarena.ingame.enums.energy.EnergyType;
 import com.pecodigos.dbarena.user.dtos.PublicProfileDTO;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,12 +12,19 @@ import java.util.Map;
 import java.util.Random;
 
 @Data
-@RequiredArgsConstructor
 public class Player {
     private final PublicProfileDTO userProfile;
-    private Map<EnergyType, Integer> energyPool = new HashMap<>();
-    private Fighter[] team = new Fighter[3];
+    private Map<EnergyType, Integer> energyPool;
+    private Fighter[] team;
     private boolean isFirstTurn;
+
+    @JsonCreator
+    public Player(@JsonProperty("userProfile") PublicProfileDTO userProfile) {
+        this.userProfile = userProfile;
+        this.energyPool = new HashMap<>();
+        this.team = new Fighter[3];
+        this.isFirstTurn = false;
+    }
 
     public String getUsername() {
         return userProfile.username();

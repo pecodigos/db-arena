@@ -1,9 +1,11 @@
 package com.pecodigos.dbarena.ingame.battle.controllers;
 
 import com.pecodigos.dbarena.ingame.battle.dto.MatchInfoDTO;
+import com.pecodigos.dbarena.ingame.battle.models.Fighter;
 import com.pecodigos.dbarena.ingame.battle.services.MatchService;
 import lombok.AllArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
@@ -17,8 +19,8 @@ public class MatchController {
 
     @MessageMapping("/battle/search")
     @SendToUser("queue/search-status")
-    public String searchForMatch(Principal principal) {
-        matchService.searchForMatch(principal.getName());
+    public String searchForMatch(@Payload Fighter[] team, Principal principal) {
+        matchService.searchForMatch(principal.getName(), team);
         return "Searching for match";
     }
 

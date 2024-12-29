@@ -1,6 +1,8 @@
 package com.pecodigos.dbarena.ingame.battle.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pecodigos.dbarena.ingame.battle.dto.MatchInfoDTO;
+import com.pecodigos.dbarena.ingame.battle.models.Fighter;
 import com.pecodigos.dbarena.ingame.battle.models.Match;
 import com.pecodigos.dbarena.ingame.battle.models.Player;
 import com.pecodigos.dbarena.ingame.enums.battle.BattleState;
@@ -26,33 +28,35 @@ public class MatchService {
     private final UserService userService;
     private final RedisTemplate<String, Object> redisTemplate;
 
-    private final Queue<PublicProfileDTO> waitingPlayers = new ConcurrentLinkedQueue<>();
+    private final Queue<Player> waitingPlayers = new ConcurrentLinkedQueue<>();
     private final Map<String, Match> activeMatches = new ConcurrentHashMap<>();
 
-    public void searchForMatch(String username) {
+    public void searchForMatch(String username, Fighter[] team) {
         PublicProfileDTO playerProfile = userService.getPublicProfile(username);
 
+        var player = new Player(playerProfile);
 
-        waitingPlayers.add(playerProfile);
+        player.setTeam(team);
+
+        waitingPlayers.add(player);
         messagingTemplate.convertAndSendToUser(username, QUEUE_MATCH + "-status", "Waiting for an opponent...");
-
 
         tryToMatch();
     }
 
     private void tryToMatch() {
         if (waitingPlayers.size() >= 2) {
-            var profileOne = waitingPlayers.poll();
-            var profileTwo = waitingPlayers.poll();
+            var playerOne = waitingPlayers.poll();
+            var playerTwo = waitingPlayers.poll();
 
-            if (profileOne == null || profileTwo == null) {
+            if (playerOne == null || playerTwo == null) {
                 return;
             }
 
-            var playerOne = new Player(profileOne);
-            playerOne.setFirstTurn(true);
+            var playerOneUsername = playerOne.getUsername();
+            var playerTwoUsername = playerTwo.getUsername();
 
-            var playerTwo = new Player(profileTwo);
+            playerOne.setFirstTurn(true);
             playerTwo.setFirstTurn(false);
 
             var match = Match.builder()
@@ -63,22 +67,23 @@ public class MatchService {
                     .battleState(BattleState.IN_BATTLE)
                     .build();
 
-            activeMatches.put(profileOne.username(), match);
-            activeMatches.put(profileTwo.username(), match);
+            activeMatches.put(playerOneUsername, match);
+            activeMatches.put(playerTwoUsername, match);
 
-            redisTemplate.opsForValue().set(REDIS_KEY + profileOne.username(), match);
-            redisTemplate.opsForValue().set(REDIS_KEY + profileTwo.username(), match);
+            redisTemplate.opsForValue().set(REDIS_KEY + playerOneUsername, match);
+            redisTemplate.opsForValue().set(REDIS_KEY + playerTwoUsername, match);
 
             var matchInfoOne = new MatchInfoDTO(match, playerTwo.getUserProfile());
             var matchInfoTwo = new MatchInfoDTO(match, playerOne.getUserProfile());
 
-            messagingTemplate.convertAndSendToUser(profileOne.username(), QUEUE_MATCH, matchInfoOne);
-            messagingTemplate.convertAndSendToUser(profileTwo.username(), QUEUE_MATCH, matchInfoTwo);
+            messagingTemplate.convertAndSendToUser(playerOneUsername, QUEUE_MATCH, matchInfoOne);
+            messagingTemplate.convertAndSendToUser(playerTwoUsername, QUEUE_MATCH, matchInfoTwo);
         }
     }
 
     public MatchInfoDTO getMatch(String username) {
-        var match = (Match) redisTemplate.opsForValue().get(REDIS_KEY + username);
+        ObjectMapper mapper = new ObjectMapper();
+        var match = mapper.convertValue(redisTemplate.opsForValue().get(REDIS_KEY + username), Match.class);
         if (match != null) {
             String opponentUsername = determineOpponentUsername(match, username);
             var opponentProfile = userService.getPublicProfile(opponentUsername);
