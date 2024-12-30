@@ -1,18 +1,18 @@
 {
-  "name": "",
-  "description": "",
-  "imagePath": "",
+  "name": "Early Tenshinhan",
+  "description": "A good friend.",
+  "imagePath": "https://i.imgur.com/IQktHse.png",
 
   "abilities": [
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
+      "name": "Drop kick",
+      "description": "Tenshinhan throw a kick into an enemy, dealing 20 damage.",
+      "imagePath": "https://i.imgur.com/V7Au0C9.png",
+      "damage": 20,
       "damageType": "FLAT",
       "cooldown": 0,
       "cost": [
-        { "energyType": "ANY", "amount": 1 }
+        { "energyType": "COMBAT", "amount": 1 }
       ],
       "skillType": "PHYSICAL",
       "distance": "MELEE",
@@ -29,7 +29,7 @@
       "description": "",
       "imagePath": "",
       "damage": 0,
-      "damageType": "FLAT",
+      "damageType": "NONE",
       "cooldown": 1,
       "cost": [
         { "energyType": "ANY", "amount": 1}
@@ -54,7 +54,7 @@
       "cost": [
         { "energyType": "TECHNIQUE", "amount": 1}
       ],
-      "distance": "NONE",
+      "distance": "RANGED",
       "skillType": "ENERGY",
       "effectType": "NONE",
       "persistentType": "INSTANT",

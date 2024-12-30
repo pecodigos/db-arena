@@ -2,13 +2,14 @@ package com.pecodigos.dbarena.ingame.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pecodigos.dbarena.ingame.entities.Character;
-import com.pecodigos.dbarena.ingame.repositories.AbilityRepository;
 import com.pecodigos.dbarena.ingame.repositories.CharacterRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Objects;
 
 @Service
@@ -17,15 +18,16 @@ public class CharacterInitService {
 
     private CharacterRepository characterRepository;
 
-    private AbilityRepository abilityRepository;
-
     public void importCharacters(String folderPath) {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
             File folder = new File(folderPath);
-            for (File file : Objects.requireNonNull(folder.listFiles())) {
-                if (file.isFile() && file.getName().endsWith(".json")) {
+            File[] files = Objects.requireNonNull(folder.listFiles((dir, name) -> name.endsWith(".json")));
+
+            Arrays.sort(files, Comparator.comparing(File::getName));
+            for (File file : files) {
+                if (file.isFile()) {
                     var character = objectMapper.readValue(file, Character.class);
 
                     boolean exists = characterRepository.findByName(character.getName()).isPresent();

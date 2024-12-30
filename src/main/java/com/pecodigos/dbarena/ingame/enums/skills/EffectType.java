@@ -11,5 +11,7 @@ public enum EffectType {
     INVULNERABLE,
     HEAL,
     DAMAGE_REDUCTION,
+    DESTRUCTABLE_DEFENSE,
+    INCREASE_DAMAGE,
     NONE
 }

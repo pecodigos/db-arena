@@ -56,6 +56,12 @@ public class MatchService {
             var playerOneUsername = playerOne.getUsername();
             var playerTwoUsername = playerTwo.getUsername();
 
+            if (playerOneUsername.equals(playerTwoUsername)) {
+                waitingPlayers.remove(playerOne);
+                waitingPlayers.remove(playerTwo);
+                return;
+            }
+
             playerOne.setFirstTurn(true);
             playerTwo.setFirstTurn(false);
 

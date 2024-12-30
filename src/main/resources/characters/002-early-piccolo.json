@@ -1,7 +1,7 @@
 {
   "name": "Early Piccolo",
   "description": "The wise and stoic Namekian warrior, once an enemy of Goku, now a mentor and protector of Earth.",
-  "imagePath": "https://i.imgur.com/jl69YdH.png",
+  "imagePath": "https://i.imgur.com/QWvTpOr.png",
 
   "abilities": [
     {
@@ -26,14 +26,14 @@
 
     {
       "name": "Beam Cannon",
-      "description": "Piccolo uses his special attack, which is a powerful energy wave in a spiral form, removing one enemy destructive defense and dealing 35 piercing damage to them.",
+      "description": "Piccolo uses his special attack, which is a powerful energy wave in a spiral form, removing one enemy destructive defense and dealing 40 piercing damage to them.",
       "imagePath": "https://i.imgur.com/Gek6IvH.png",
       "damage": 35,
       "damageType": "PIERCING",
       "cooldown": 1,
       "cost": [
         { "energyType": "KI", "amount": 1 },
-        { "energyType": "ANY", "amount": 1}
+        { "energyType": "BLOODLINE", "amount": 1}
       ],
       "skillType": "ENERGY",
       "distance": "RANGED",

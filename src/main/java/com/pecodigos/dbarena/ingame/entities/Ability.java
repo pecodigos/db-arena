@@ -25,6 +25,7 @@ public class Ability {
     private String description;
     private String imagePath;
     private Integer damage;
+    private Integer helpingPoints;
     private Integer cooldown;
 
     @OneToMany(mappedBy = "ability", cascade = CascadeType.ALL)
