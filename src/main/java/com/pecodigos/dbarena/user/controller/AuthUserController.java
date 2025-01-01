@@ -49,7 +49,7 @@ public class AuthUserController {
 
     @PutMapping("/user/{id}/password")
     public ResponseEntity<UserResponseDTO> updatePassword(@PathVariable UUID id, @RequestBody PasswordDTO passwordDTO) {
-        return ResponseEntity.ok(userService.changePassword(id, passwordDTO.currentPassword(), passwordDTO.currentPassword()));
+        return ResponseEntity.ok(userService.changePassword(id, passwordDTO.currentPassword(), passwordDTO.newPassword()));
     }
 
     @PutMapping("/user/{id}/avatar")

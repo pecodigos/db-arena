@@ -5,14 +5,15 @@
 
   "abilities": [
     {
-      "name": "Blast",
-      "description": "Piccolo throws a blast at one enemy, dealing 20 piercing damage to them.",
-      "imagePath": "https://i.imgur.com/0OLHV8i.png",
-      "damage": 20,
+      "name": "Special Beam Cannon",
+      "description": "Piccolo uses his special attack, which is a powerful energy wave in a spiral form, removing one enemy destructive defense and dealing 30 piercing damage to them.",
+      "imagePath": "https://i.imgur.com/Gek6IvH.png",
+      "damage": 30,
       "damageType": "PIERCING",
-      "cooldown": 0,
+      "cooldown": 1,
       "cost": [
-        { "energyType": "KI", "amount":  1 }
+        { "energyType": "TECHNIQUE", "amount": 1 },
+        { "energyType": "ANY", "amount": 1 }
       ],
       "skillType": "ENERGY",
       "distance": "RANGED",
@@ -23,24 +24,23 @@
       "isHarmful": true,
       "requirements": []
     },
-
     {
-      "name": "Beam Cannon",
-      "description": "Piccolo uses his special attack, which is a powerful energy wave in a spiral form, removing one enemy destructive defense and dealing 40 piercing damage to them.",
-      "imagePath": "https://i.imgur.com/Gek6IvH.png",
-      "damage": 35,
-      "damageType": "PIERCING",
-      "cooldown": 1,
+      "name": "Self regeneration",
+      "description": "Piccolo concentrates to heal himself for 30 health points.",
+      "imagePath": "https://i.imgur.com/lDb1KLF.png",
+      "damage": 0,
+      "damageType": "NONE",
+      "cooldown": 3,
       "cost": [
-        { "energyType": "KI", "amount": 1 },
-        { "energyType": "BLOODLINE", "amount": 1}
+        { "energyType": "BLOODLINE", "amount":  1 },
+        { "energyType": "ANY", "amount": 1 }
       ],
-      "skillType": "ENERGY",
-      "distance": "RANGED",
-      "effectType": "NONE",
+      "skillType": "MENTAL",
+      "distance": "NONE",
+      "effectType": "HEAL",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
-      "isUnique": true,
+      "isUnique": false,
       "isHarmful": true,
       "requirements": []
     },
@@ -76,7 +76,7 @@
         { "energyType": "ANY", "amount": 1 }
       ],
       "distance": "NONE",
-      "skillType": "ENERGY",
+      "skillType": "PHYSICAL",
       "effectType": "NONE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,

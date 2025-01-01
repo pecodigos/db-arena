@@ -23,16 +23,13 @@ public class MatchLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "player_one_id", nullable = false)
-    private User playerOne;
+    @Column(nullable = false)
+    private String playerOneUsername;
 
-    @ManyToOne
-    @JoinColumn(name = "player_two_id", nullable = false)
-    private User playerTwo;
+    @Column(nullable = false)
+    private String playerTwoUsername;
 
-    @ManyToOne
-    private User winner;
+    private String winnerUsername;
 
     @Enumerated(EnumType.STRING)
     private BattleQueueType battleQueueType;

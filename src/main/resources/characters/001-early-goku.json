@@ -8,11 +8,12 @@
       "name": "Rush Attack",
       "description": "Goku strikes several punches at one enemy, dealing 20 damage to them and making them deal 10 less damage on the next turn.",
       "imagePath": "https://i.imgur.com/gw6p7xq.png",
-      "damage": 20,
+      "damage": 25,
       "damageType": "FLAT",
       "cooldown": 0,
       "cost": [
-        { "energyType": "COMBAT", "amount":  1 }
+        { "energyType": "COMBAT", "amount":  1 },
+        { "energyType": "ANY", "amount": 1 }
       ],
       "skillType": "PHYSICAL",
       "distance": "MELEE",
@@ -47,7 +48,7 @@
 
     {
       "name": "Kaioken",
-      "description": "Goku unleashes Kaioken power. He will gain 10 damage reduction points, his abilities will deal 10 additional damage and 'Kamehameha' will stun. This ability lasts 3 turns.",
+      "description": "Goku unleashes Kaioken power. He will gain 15 damage reduction points, his abilities will deal 10 additional damage and 'Kamehameha' will stun. This ability lasts 3 turns.",
       "imagePath": "https://i.imgur.com/8t9a0IK.png",
       "damage": 0,
       "damageType": "NONE",

@@ -1,5 +1,6 @@
 package com.pecodigos.dbarena.ingame.battle.models;
 
+import com.pecodigos.dbarena.ingame.enums.battle.BattleQueueType;
 import com.pecodigos.dbarena.ingame.enums.battle.BattleState;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +17,7 @@ public class Match {
     private Player currentPlayer;
     private Integer turnNumber;
     private BattleState battleState;
+    private BattleQueueType battleQueueType;
 
     public Player whoStarts() {
         return Math.random() < 0.5 ? playerOne : playerTwo;

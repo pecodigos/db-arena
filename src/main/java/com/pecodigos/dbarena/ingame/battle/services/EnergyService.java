@@ -33,9 +33,8 @@ public class EnergyService {
         return true;
     }
 
-
     public static void consumeEnergy(Map<EnergyType, Integer> playerEnergy, List<AbilityCost> abilityCosts) {
-        if (!doesntHaveEnoughEnergy(playerEnergy, abilityCosts)) {
+        if (!doesNotHaveEnoughEnergy(playerEnergy, abilityCosts)) {
             throw new IllegalStateException("Not enough energy to perform this skill");
         }
 

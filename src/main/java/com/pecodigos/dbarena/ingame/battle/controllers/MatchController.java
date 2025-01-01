@@ -1,7 +1,8 @@
 package com.pecodigos.dbarena.ingame.battle.controllers;
 
 import com.pecodigos.dbarena.ingame.battle.dto.MatchInfoDTO;
-import com.pecodigos.dbarena.ingame.battle.models.Fighter;
+import com.pecodigos.dbarena.ingame.battle.dto.SearchMatchRequest;
+import com.pecodigos.dbarena.ingame.battle.dto.TurnActions;
 import com.pecodigos.dbarena.ingame.battle.services.MatchService;
 import lombok.AllArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -19,8 +20,8 @@ public class MatchController {
 
     @MessageMapping("/battle/search")
     @SendToUser("queue/search-status")
-    public String searchForMatch(@Payload Fighter[] team, Principal principal) {
-        matchService.searchForMatch(principal.getName(), team);
+    public String searchForMatch(@Payload SearchMatchRequest request, Principal principal) {
+        matchService.searchForMatch(principal.getName(), request.team(), request.battleQueueType());
         return "Searching for match";
     }
 
@@ -31,7 +32,11 @@ public class MatchController {
     }
 
     @MessageMapping("/battle/end-turn")
-    public void endTurn(Principal principal) {
-        matchService.endTurn(principal.getName());
+    public void endTurn(@Payload TurnActions turnActions, Principal principal) {
+        try {
+            matchService.endTurn(principal.getName(), turnActions);
+        } catch (IllegalStateException e) {
+            matchService.notifyError(principal.getName(), e.getMessage());
+        }
     }
 }

@@ -1,21 +1,21 @@
 {
-  "name": "Early Kuririn",
+  "name": "Early Krillin",
   "description": "",
   "imagePath": "https://i.imgur.com/giLR61G.png",
 
   "abilities": [
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
+      "name": "Kamehameha",
+      "description": "Deals 25 damage to one enemy.",
+      "imagePath": "https://i.imgur.com/Wt6bvLy.png",
+      "damage": 25,
       "damageType": "FLAT",
       "cooldown": 0,
       "cost": [
-        { "energyType": "ANY", "amount": 1 }
+        { "energyType": "KI", "amount": 1 }
       ],
-      "skillType": "PHYSICAL",
-      "distance": "MELEE",
+      "skillType": "ENERGY",
+      "distance": "RANGED",
       "effectType": "NONE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
@@ -25,34 +25,36 @@
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
+      "name": "Scattering Bullet",
+      "description": "Target all enemies and deal 20 damage to them.",
+      "imagePath": "https://i.imgur.com/mnwcRvz.png",
+      "damage": 20,
       "damageType": "FLAT",
       "cooldown": 1,
       "cost": [
-        { "energyType": "ANY", "amount": 1}
+        { "energyType": "KI", "amount": 1 },
+        { "energyType": "ANY", "amount": 1 }
       ],
       "skillType": "ENERGY",
       "distance": "RANGED",
       "effectType": "NONE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
-      "isUnique": true,
+      "isUnique": false,
       "isHarmful": true,
       "requirements": []
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
-      "damageType": "NONE",
-      "cooldown": 4,
+      "name": "Destructo Disc",
+      "description": "Deals 20 piercing damage to one enemy for two turns.",
+      "imagePath": "https://i.imgur.com/mr2cJ2r.png",
+      "damage": 20,
+      "damageType": "PIERCING",
+      "cooldown": 1,
       "cost": [
-        { "energyType": "TECHNIQUE", "amount": 1}
+        { "energyType": "TECHNIQUE", "amount": 1 },
+        { "energyType": "ANY", "amount": 1 }
       ],
       "distance": "NONE",
       "skillType": "ENERGY",
@@ -65,9 +67,9 @@
     },
 
     {
-      "name": "Block",
-      "description": "Goku becomes invulnerable for one turn.",
-      "imagePath": "https://i.imgur.com/LfSE5GF.png",
+      "name": "Evade",
+      "description": "Krillin becomes invulnerable for one turn.",
+      "imagePath": "https://i.imgur.com/c2mT9iD.png",
       "damage": 0,
       "damageType": "NONE",
       "cooldown": 4,
@@ -75,7 +77,7 @@
         { "energyType": "ANY", "amount": 1 }
       ],
       "distance": "NONE",
-      "skillType": "ENERGY",
+      "skillType": "PHYSICAL",
       "effectType": "NONE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
