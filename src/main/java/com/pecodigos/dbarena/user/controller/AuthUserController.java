@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -48,12 +49,20 @@ public class AuthUserController {
     }
 
     @PutMapping("/user/{id}/password")
-    public ResponseEntity<UserResponseDTO> updatePassword(@PathVariable UUID id, @RequestBody PasswordDTO passwordDTO) {
-        return ResponseEntity.ok(userService.changePassword(id, passwordDTO.currentPassword(), passwordDTO.newPassword()));
+    public ResponseEntity<UserResponseDTO> updatePassword(@PathVariable UUID id,
+                                                          @RequestBody PasswordDTO passwordDTO,
+                                                          Principal principal) {
+        return ResponseEntity.ok(
+                userService.changePassword(id, principal.getName(), passwordDTO.currentPassword(), passwordDTO.newPassword())
+        );
     }
 
     @PutMapping("/user/{id}/avatar")
-    public ResponseEntity<UserResponseDTO> updateAvatar(@PathVariable UUID id, @RequestBody PublicProfileDTO publicProfileDTO) {
-        return ResponseEntity.ok(userService.changeAvatar(id, publicProfileDTO.profilePicturePath()));
+    public ResponseEntity<UserResponseDTO> updateAvatar(@PathVariable UUID id,
+                                                        @RequestBody PublicProfileDTO publicProfileDTO,
+                                                        Principal principal) {
+        return ResponseEntity.ok(
+                userService.changeAvatar(id, principal.getName(), publicProfileDTO.profilePicturePath())
+        );
     }
 }

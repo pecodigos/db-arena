@@ -18,6 +18,7 @@ public class Match {
     private Integer turnNumber;
     private BattleState battleState;
     private BattleQueueType battleQueueType;
+    private boolean currentTurnPrepared;
 
     public Player whoStarts() {
         return Math.random() < 0.5 ? playerOne : playerTwo;

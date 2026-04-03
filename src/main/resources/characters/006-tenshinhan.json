@@ -1,6 +1,6 @@
 {
-  "name": "Early Tenshinhan",
-  "description": "A good friend.",
+  "name": "Tenshinhan",
+  "description": "A disciplined martial artist who constantly pushes his limits.",
   "imagePath": "https://i.imgur.com/IQktHse.png",
 
   "abilities": [
@@ -25,13 +25,14 @@
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
-      "damageType": "NONE",
-      "cooldown": 1,
+      "name": "Dodon Ray",
+      "description": "Tenshinhan fires a devastating Dodon Ray, dealing 25 damage that pierces defense.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
+      "damage": 25,
+      "damageType": "PIERCING",
+      "cooldown": 2,
       "cost": [
+        { "energyType": "TECHNIQUE", "amount": 1},
         { "energyType": "ANY", "amount": 1}
       ],
       "skillType": "ENERGY",
@@ -45,28 +46,29 @@
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
-      "damageType": "NONE",
-      "cooldown": 4,
+      "name": "Tri-Beam",
+      "description": "Tenshinhan uses his life force to fire a massive Tri-Beam, dealing 40 damage to one enemy but taking 10 affliction damage himself.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
+      "damage": 40,
+      "damageType": "FLAT",
+      "cooldown": 3,
       "cost": [
-        { "energyType": "TECHNIQUE", "amount": 1}
+        { "energyType": "KI", "amount": 1},
+        { "energyType": "COMBAT", "amount": 1}
       ],
       "distance": "RANGED",
       "skillType": "ENERGY",
       "effectType": "NONE",
       "persistentType": "INSTANT",
-      "durationInTurns": 2,
+      "durationInTurns": 1,
       "isUnique": true,
-      "isHarmful": false,
+      "isHarmful": true,
       "requirements": []
     },
 
     {
       "name": "Block",
-      "description": "Goku becomes invulnerable for one turn.",
+      "description": "Tenshinhan becomes invulnerable for one turn.",
       "imagePath": "https://i.imgur.com/LfSE5GF.png",
       "damage": 0,
       "damageType": "NONE",
@@ -75,8 +77,8 @@
         { "energyType": "ANY", "amount": 1 }
       ],
       "distance": "NONE",
-      "skillType": "ENERGY",
-      "effectType": "NONE",
+      "skillType": "DEFENSE",
+      "effectType": "INVULNERABLE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
       "isUnique": false,

@@ -17,9 +17,10 @@
       ],
       "skillType": "PHYSICAL",
       "distance": "MELEE",
-      "effectType": "NONE",
+      "effectType": "WEAKEN",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
+      "helpingPoints": 10,
       "isUnique": false,
       "isHarmful": true,
       "requirements": []
@@ -41,6 +42,7 @@
       "effectType": "NONE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
+      "stunIfHasActiveEffect": "Kaioken",
       "isUnique": true,
       "isHarmful": true,
       "requirements": []
@@ -60,7 +62,9 @@
       "skillType": "ENERGY",
       "effectType": "PREPARATION",
       "persistentType": "INSTANT",
-      "durationInTurns": 2,
+      "durationInTurns": 3,
+      "bonusDamage": 10,
+      "damageReduction": 15,
       "isUnique": true,
       "isHarmful": false,
       "requirements": []
@@ -77,8 +81,8 @@
         { "energyType": "ANY", "amount": 1 }
       ],
       "distance": "NONE",
-      "skillType": "ENERGY",
-      "effectType": "NONE",
+      "skillType": "DEFENSE",
+      "effectType": "INVULNERABLE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
       "isUnique": false,

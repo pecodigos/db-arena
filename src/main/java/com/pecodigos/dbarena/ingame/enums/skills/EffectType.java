@@ -13,5 +13,6 @@ public enum EffectType {
     DAMAGE_REDUCTION,
     DESTRUCTABLE_DEFENSE,
     INCREASE_DAMAGE,
+    WEAKEN,
     NONE
 }

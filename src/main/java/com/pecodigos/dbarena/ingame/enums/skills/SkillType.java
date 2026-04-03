@@ -4,5 +4,6 @@ public enum SkillType {
     PHYSICAL,
     ENERGY,
     AFFLICTION,
-    MENTAL
+    MENTAL,
+    DEFENSE
 }

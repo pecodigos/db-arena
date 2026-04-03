@@ -1,18 +1,18 @@
 {
   "name": "Yajirobe",
-  "description": "",
+  "description": "A cowardly but occasionally useful swordsman who lives at Korin Tower.",
   "imagePath": "https://i.imgur.com/evqlqjO.png",
 
   "abilities": [
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
+      "name": "Sword Slash",
+      "description": "Yajirobe swings his katana at an enemy, dealing 15 damage.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
+      "damage": 15,
       "damageType": "FLAT",
       "cooldown": 0,
       "cost": [
-        { "energyType": "ANY", "amount": 1 }
+        { "energyType": "COMBAT", "amount": 1 }
       ],
       "skillType": "PHYSICAL",
       "distance": "MELEE",
@@ -25,17 +25,18 @@
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
-      "damageType": "FLAT",
-      "cooldown": 1,
+      "name": "Miracle Strike",
+      "description": "Yajirobe performs a surprise strike, dealing 25 damage that pierces defense.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
+      "damage": 25,
+      "damageType": "PIERCING",
+      "cooldown": 2,
       "cost": [
-        { "energyType": "ANY", "amount": 1}
+        { "energyType": "COMBAT", "amount": 1},
+        { "energyType": "TECHNIQUE", "amount": 1}
       ],
-      "skillType": "ENERGY",
-      "distance": "RANGED",
+      "skillType": "PHYSICAL",
+      "distance": "MELEE",
       "effectType": "NONE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
@@ -45,20 +46,21 @@
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
+      "name": "Senzu Bean",
+      "description": "Yajirobe eats a Senzu bean, healing 25 health to himself.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
+      "damage": 25,
       "damageType": "NONE",
       "cooldown": 4,
       "cost": [
-        { "energyType": "TECHNIQUE", "amount": 1}
+        { "energyType": "TECHNIQUE", "amount": 1},
+        { "energyType": "ANY", "amount": 1}
       ],
       "distance": "NONE",
-      "skillType": "ENERGY",
-      "effectType": "NONE",
+      "skillType": "MENTAL",
+      "effectType": "HEAL",
       "persistentType": "INSTANT",
-      "durationInTurns": 2,
+      "durationInTurns": 1,
       "isUnique": true,
       "isHarmful": false,
       "requirements": []
@@ -66,7 +68,7 @@
 
     {
       "name": "Block",
-      "description": "Goku becomes invulnerable for one turn.",
+      "description": "Yajirobe hides and becomes invulnerable for one turn.",
       "imagePath": "https://i.imgur.com/LfSE5GF.png",
       "damage": 0,
       "damageType": "NONE",
@@ -75,8 +77,8 @@
         { "energyType": "ANY", "amount": 1 }
       ],
       "distance": "NONE",
-      "skillType": "ENERGY",
-      "effectType": "NONE",
+      "skillType": "DEFENSE",
+      "effectType": "INVULNERABLE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
       "isUnique": false,

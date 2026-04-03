@@ -1,18 +1,18 @@
 {
   "name": "Chiaotzu",
-  "description": "",
+  "description": "A small psychic martial artist and Tenshinhan's best friend.",
   "imagePath": "https://i.imgur.com/gVGVz9O.png",
 
   "abilities": [
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
+      "name": "Headbutt",
+      "description": "Chiaotzu flies head-first into an enemy, dealing 10 damage.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
+      "damage": 10,
       "damageType": "FLAT",
       "cooldown": 0,
       "cost": [
-        { "energyType": "ANY", "amount": 1 }
+        { "energyType": "COMBAT", "amount": 1 }
       ],
       "skillType": "PHYSICAL",
       "distance": "MELEE",
@@ -25,14 +25,14 @@
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
-      "damageType": "FLAT",
+      "name": "Dodon Ray",
+      "description": "Chiaotzu fires a Dodon Ray, dealing 15 damage that pierces defense.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
+      "damage": 15,
+      "damageType": "PIERCING",
       "cooldown": 1,
       "cost": [
-        { "energyType": "ANY", "amount": 1}
+        { "energyType": "KI", "amount": 1}
       ],
       "skillType": "ENERGY",
       "distance": "RANGED",
@@ -45,28 +45,28 @@
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
+      "name": "Psychic Hold",
+      "description": "Chiaotzu uses his psychic powers to stop an enemy's movement, weakening them for 1 turn.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
       "damage": 0,
       "damageType": "NONE",
-      "cooldown": 4,
+      "cooldown": 3,
       "cost": [
         { "energyType": "TECHNIQUE", "amount": 1}
       ],
-      "distance": "NONE",
-      "skillType": "ENERGY",
-      "effectType": "NONE",
+      "distance": "RANGED",
+      "skillType": "MENTAL",
+      "effectType": "WEAKEN",
       "persistentType": "INSTANT",
-      "durationInTurns": 2,
+      "durationInTurns": 1,
       "isUnique": true,
-      "isHarmful": false,
+      "isHarmful": true,
       "requirements": []
     },
 
     {
       "name": "Block",
-      "description": "Goku becomes invulnerable for one turn.",
+      "description": "Chiaotzu becomes invulnerable for one turn.",
       "imagePath": "https://i.imgur.com/LfSE5GF.png",
       "damage": 0,
       "damageType": "NONE",
@@ -75,8 +75,8 @@
         { "energyType": "ANY", "amount": 1 }
       ],
       "distance": "NONE",
-      "skillType": "ENERGY",
-      "effectType": "NONE",
+      "skillType": "DEFENSE",
+      "effectType": "INVULNERABLE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
       "isUnique": false,

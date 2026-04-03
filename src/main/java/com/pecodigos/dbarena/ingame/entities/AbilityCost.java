@@ -1,7 +1,6 @@
 package com.pecodigos.dbarena.ingame.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.pecodigos.dbarena.ingame.entities.Ability;
 import com.pecodigos.dbarena.ingame.enums.energy.EnergyType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

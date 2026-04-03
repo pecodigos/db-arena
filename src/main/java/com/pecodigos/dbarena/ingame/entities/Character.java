@@ -24,5 +24,6 @@ public class Character {
     private String imagePath;
 
     @OneToMany(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OrderBy("id ASC")
     private List<Ability> abilities;
 }

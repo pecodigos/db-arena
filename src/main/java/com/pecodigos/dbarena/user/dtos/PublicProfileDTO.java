@@ -1,6 +1,8 @@
 package com.pecodigos.dbarena.user.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.pecodigos.dbarena.config.jackson.FlexibleLocalDateTimeDeserializer;
 import com.pecodigos.dbarena.user.enums.Rank;
 import com.pecodigos.dbarena.user.enums.Role;
 import jakarta.validation.constraints.NotNull;
@@ -20,5 +22,7 @@ public record PublicProfileDTO(@NotNull String username,
                                @NotNull Integer loses,
                                @NotNull Integer currentStreak,
                                @NotNull Integer highestStreak,
-                               @NotNull @JsonFormat(pattern = "MMMM dd, yyyy", shape = JsonFormat.Shape.STRING) LocalDateTime createdAt) {
+                               @NotNull @JsonFormat(pattern = "MMMM dd, yyyy", shape = JsonFormat.Shape.STRING)
+                               @JsonDeserialize(using = FlexibleLocalDateTimeDeserializer.class)
+                               LocalDateTime createdAt) {
 }

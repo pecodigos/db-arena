@@ -13,7 +13,12 @@ public record AbilityDTO(
         @NotBlank String description,
         @NotBlank String imagePath,
         @NotNull Integer damage,
+        Integer secondaryDamage,
+        Integer helpingPoints,
+        Integer bonusDamage,
+        Integer damageReduction,
         @NotNull Integer cooldown,
+        String stunIfHasActiveEffect,
         @NotNull DamageType damageType,
         @NotNull EffectType effectType,
         @NotNull Distance distance,
@@ -22,5 +27,6 @@ public record AbilityDTO(
         @NotNull Integer durationInTurns,
         @JsonProperty("isUnique") Boolean isUnique,
         @JsonProperty("isHarmful") Boolean isHarmful,
+        @JsonProperty("isInvisible") Boolean isInvisible,
         @NotNull List<AbilityCostDTO> cost
 ) {}

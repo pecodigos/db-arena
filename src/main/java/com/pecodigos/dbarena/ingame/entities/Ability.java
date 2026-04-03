@@ -1,6 +1,7 @@
 package com.pecodigos.dbarena.ingame.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pecodigos.dbarena.ingame.enums.skills.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,8 +26,12 @@ public class Ability {
     private String description;
     private String imagePath;
     private Integer damage;
+    private Integer secondaryDamage;
     private Integer helpingPoints;
+    private Integer bonusDamage;
+    private Integer damageReduction;
     private Integer cooldown;
+    private String stunIfHasActiveEffect;
 
     @OneToMany(mappedBy = "ability", cascade = CascadeType.ALL)
     private List<AbilityCost> cost;
@@ -53,6 +58,8 @@ public class Ability {
 
     @JsonProperty("isHarmful")
     private Boolean isHarmful;
+    @JsonProperty("isInvisible")
+    private Boolean isInvisible;
 
     @ManyToMany
     @JoinTable(
@@ -60,9 +67,11 @@ public class Ability {
             joinColumns = @JoinColumn(name = "ability_id"),
             inverseJoinColumns = @JoinColumn(name = "required_ability_id")
     )
+    @JsonIgnore
     private List<Ability> requirements;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "character_id")
+    @JsonIgnore
     private Character character;
 }

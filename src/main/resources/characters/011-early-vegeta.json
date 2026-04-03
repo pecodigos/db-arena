@@ -40,6 +40,7 @@
       "effectType": "AOE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
+      "secondaryDamage": 10,
       "isUnique": true,
       "isHarmful": true,
       "requirements": []
@@ -61,7 +62,7 @@
       "persistentType": "INSTANT",
       "durationInTurns": 2,
       "isUnique": true,
-      "isHarmful": false,
+      "isHarmful": true,
       "requirements": []
     },
 
@@ -76,8 +77,8 @@
         { "energyType": "ANY", "amount": 1 }
       ],
       "distance": "NONE",
-      "skillType": "ENERGY",
-      "effectType": "NONE",
+      "skillType": "DEFENSE",
+      "effectType": "INVULNERABLE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
       "isUnique": false,

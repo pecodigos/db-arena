@@ -40,13 +40,15 @@
       "effectType": "HEAL",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
+      "helpingPoints": 30,
       "isUnique": false,
-      "isHarmful": true,
+      "isHarmful": false,
       "requirements": []
     },
 
     {
       "name": "Protect an Ally",
+      "isInvisible": true,
       "description": "Piccolo protects one ally for one turn. In that turn, all damage that character would suffer is halved and transferred to Piccolo's. This skill is invisible.",
       "imagePath": "https://i.imgur.com/J7jymAt.png",
       "damage": 0,
@@ -55,11 +57,11 @@
       "cost": [
         { "energyType": "ANY", "amount": 1 }
       ],
-      "distance": "NONE",
+      "distance": "MELEE",
       "skillType": "PHYSICAL",
       "effectType": "PREPARATION",
       "persistentType": "INSTANT",
-      "durationInTurns": 2,
+      "durationInTurns": 1,
       "isUnique": false,
       "isHarmful": false,
       "requirements": []
@@ -77,7 +79,7 @@
       ],
       "distance": "NONE",
       "skillType": "PHYSICAL",
-      "effectType": "NONE",
+      "effectType": "INVULNERABLE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
       "isUnique": false,

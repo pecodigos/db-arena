@@ -1,18 +1,18 @@
 {
   "name": "Yamcha",
-  "description": "",
+  "description": "A former desert bandit who became one of Goku's allies.",
   "imagePath": "https://i.imgur.com/0uBvbcR.png",
 
   "abilities": [
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
+      "name": "Wolf Fang Fist",
+      "description": "Yamcha attacks an enemy with his signature Wolf Fang Fist, dealing 20 damage.",
+      "imagePath": "https://i.imgur.com/uNl0Qz9.png",
+      "damage": 20,
       "damageType": "FLAT",
       "cooldown": 0,
       "cost": [
-        { "energyType": "ANY", "amount": 1 }
+        { "energyType": "COMBAT", "amount": 1 }
       ],
       "skillType": "PHYSICAL",
       "distance": "MELEE",
@@ -25,14 +25,14 @@
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
+      "name": "Kamehameha",
+      "description": "Yamcha fires a Kamehameha wave at an enemy, dealing 25 damage.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
+      "damage": 25,
       "damageType": "FLAT",
       "cooldown": 1,
       "cost": [
-        { "energyType": "ANY", "amount": 1}
+        { "energyType": "KI", "amount": 1}
       ],
       "skillType": "ENERGY",
       "distance": "RANGED",
@@ -45,28 +45,29 @@
     },
 
     {
-      "name": "",
-      "description": "",
-      "imagePath": "",
-      "damage": 0,
-      "damageType": "NONE",
-      "cooldown": 4,
+      "name": "Spirit Ball",
+      "description": "Yamcha creates a controllable energy sphere, dealing 15 damage that pierces defense.",
+      "imagePath": "https://i.imgur.com/1G66d6A.png",
+      "damage": 15,
+      "damageType": "PIERCING",
+      "cooldown": 3,
       "cost": [
-        { "energyType": "TECHNIQUE", "amount": 1}
+        { "energyType": "TECHNIQUE", "amount": 1},
+        { "energyType": "KI", "amount": 1}
       ],
-      "distance": "NONE",
+      "distance": "RANGED",
       "skillType": "ENERGY",
       "effectType": "NONE",
       "persistentType": "INSTANT",
-      "durationInTurns": 2,
+      "durationInTurns": 1,
       "isUnique": true,
-      "isHarmful": false,
+      "isHarmful": true,
       "requirements": []
     },
 
     {
       "name": "Block",
-      "description": "Goku becomes invulnerable for one turn.",
+      "description": "Yamcha becomes invulnerable for one turn.",
       "imagePath": "https://i.imgur.com/LfSE5GF.png",
       "damage": 0,
       "damageType": "NONE",
@@ -75,8 +76,8 @@
         { "energyType": "ANY", "amount": 1 }
       ],
       "distance": "NONE",
-      "skillType": "ENERGY",
-      "effectType": "NONE",
+      "skillType": "DEFENSE",
+      "effectType": "INVULNERABLE",
       "persistentType": "INSTANT",
       "durationInTurns": 1,
       "isUnique": false,

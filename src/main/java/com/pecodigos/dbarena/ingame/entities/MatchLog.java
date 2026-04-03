@@ -1,7 +1,6 @@
 package com.pecodigos.dbarena.ingame.entities;
 
 import com.pecodigos.dbarena.ingame.enums.battle.BattleQueueType;
-import com.pecodigos.dbarena.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -15,8 +15,7 @@ public class DataInitializer {
     @Bean
     public CommandLineRunner loadData() {
         return args -> {
-            String folderPath = "src/main/resources/characters";
-            characterInitService.importCharacters(folderPath);
+            characterInitService.importCharacters("classpath*:characters/*.json");
         };
     }
 }
