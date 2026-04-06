@@ -1,0 +1,32 @@
+name: Java CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
+      - name: Ensure executables
+        run: chmod +x ./mvnw ./scripts/check-root-hygiene.sh
+
+      - name: Enforce repository structure
+        run: ./scripts/check-root-hygiene.sh
+
+      - name: Run tests
+        run: ./mvnw -B test

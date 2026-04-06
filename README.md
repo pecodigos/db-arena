@@ -2,6 +2,22 @@
 
 This is the Spring Boot backend for Dragon Ball Arena.
 
+## Architecture and Cleanup Guide
+
+See `docs/ARCHITECTURE-CLEANUP.md` for backend boundaries, service split strategy,
+and cleanup direction.
+See `docs/adr/0001-script-lifecycle-and-root-hygiene.md` for the script lifecycle decision record.
+
+## Repository Hygiene
+
+- Archived one-off patch/fix artifacts live in `scripts/legacy-patches/`.
+- Temporary active migration helpers should be created in `scripts/migrations/`.
+- Validate root hygiene with:
+
+```bash
+./scripts/check-root-hygiene.sh
+```
+
 ## Setup
 
 The backend requires a database and Redis. You can start the necessary infrastructure using Docker Compose:
